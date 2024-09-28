@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Real Estate App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'realty_pulse/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'realty_pulse:home' %}">Home</a></li>
+                <li><a href="{% url 'realty_pulse:city_list' %}">Cities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Real Estate App</p>
+    </footer>
+</body>
+</html>
