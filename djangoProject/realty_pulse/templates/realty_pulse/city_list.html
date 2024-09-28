@@ -1,0 +1,28 @@
+{% extends 'realty_pulse/base.html' %}
+
+{% block title %}City List - Real Estate App{% endblock %}
+
+{% block content %}
+    <h1>Available Cities</h1>
+
+    <form method="get">
+        <label for="sort">Sort By:</label>
+        <select name="sort" id="sort">
+            <option value="roi">ROI</option>
+            <option value="population">Population</option>
+        </select>
+        <button type="submit">Sort</button>
+    </form>
+
+    <ul>
+        {% for city in cities %}
+            <li>
+                <a href="{% url 'realty_pulse:city_detail' city.id %}">{{ city.name }}</a>
+                - ROI: {{ city.roi }}%
+                - Population: {{ city.population }}
+            </li>
+        {% empty %}
+            <li>No cities found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
