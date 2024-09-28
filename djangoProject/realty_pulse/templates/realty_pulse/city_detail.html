@@ -1,14 +1,25 @@
 {% extends 'realty_pulse/base.html' %}
 
-{% block title %}{{ city.name }} Details - Real Estate App{% endblock %}
+{% block title %}{{ city.name }} Details - Property Pulse App{% endblock %}
 
 {% block content %}
-    <h1>{{ city.name }}</h1>
+    <div class="mt-4">
+        <h1>{{ city.name }}</h1>
 
-    <p><strong>ROI:</strong> {{ city.roi }}%</p>
-    <p><strong>Population:</strong> {{ city.population }}</p>
-    <p><strong>Move-in Data:</strong> {{ city.move_in_data }}</p>
-    <p><strong>Move-out Data:</strong> {{ city.move_out_data }}</p>
+        <dl class="row mt-4">
+            <dt class="col-sm-3"><strong>ROI:</strong></dt>
+            <dd class="col-sm-9">{{ city.roi }}%</dd>
 
-    <a href="{% url 'realty_pulse:city_list' %}">Back to City List</a>
+            <dt class="col-sm-3"><strong>Population:</strong></dt>
+            <dd class="col-sm-9">{{ city.population }}</dd>
+
+            <dt class="col-sm-3"><strong>Move-in Data:</strong></dt>
+            <dd class="col-sm-9">{{ city.move_in_data }}</dd>
+
+            <dt class="col-sm-3"><strong>Move-out Data:</strong></dt>
+            <dd class="col-sm-9">{{ city.move_out_data }}</dd>
+        </dl>
+
+        <a href="{% url 'realty_pulse:city_list' %}" class="btn btn-secondary mt-4">Back to City List</a>
+    </div>
 {% endblock %}

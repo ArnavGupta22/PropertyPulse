@@ -1,11 +1,11 @@
 {% extends 'realty_pulse/base.html' %}
 
-{% block title %}Home - Real Estate App{% endblock %}
+{% block title %}Home - Property Pulse App{% endblock %}
 
 {% block content %}
-    <div class="centered-container">
-        <h1>Welcome to the Real Estate Investment App</h1>
-        <p>Find the best cities to invest in real estate by sorting through key metrics like ROI, population, and move-in data.</p>
-        <a href="{% url 'realty_pulse:city_list' %}" class="btn">Browse Cities</a>
+    <div class="text-center mt-5">
+        <h1>Welcome to the Property Pulse App</h1>
+        <p class="lead mt-3">Find the best cities to invest in real estate by sorting through key metrics like ROI, population, and move-in data.</p>
+        <a href="{% url 'realty_pulse:city_list' %}" class="btn btn-primary btn-lg mt-4">Browse Cities</a>
     </div>
 {% endblock %}
