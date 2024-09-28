@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'realty_pulse/css/style.css' %}">
+</head>
+
+<body>
+    <div class="centered-container">
+        <div class ="container mt-5">
+        <h1 class="text-center">Atlanta Food Finder</h1>
+
+        <form method="post" action="{% url 'realty_pulse:register' %}" class="mt-4">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="form-group">
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password1">Password:</label>
+                {{ form.password1 }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password2">Confirm Password:</label>
+                {{ form.password2 }}
+            </div>
+
+
+            <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary btn-centered">Register</button>
+            </div>
+
+            <div class="text-center mt-3">
+            <a href="/realty_pulse/login">Login?</a>
+            </div>
+        </form>
+        {% if form.errors %}
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

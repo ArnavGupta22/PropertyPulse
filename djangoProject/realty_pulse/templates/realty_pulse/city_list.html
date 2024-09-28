@@ -1,28 +1,30 @@
 {% extends 'realty_pulse/base.html' %}
 
-{% block title %}City List - Real Estate App{% endblock %}
+{% block title %}City List - Property Pulse App{% endblock %}
 
 {% block content %}
-    <h1>Available Cities</h1>
+    <div class="mt-4">
+        <h1 class="mb-4">Available Cities</h1>
 
-    <form method="get">
-        <label for="sort">Sort By:</label>
-        <select name="sort" id="sort">
-            <option value="roi">ROI</option>
-            <option value="population">Population</option>
-        </select>
-        <button type="submit">Sort</button>
-    </form>
+        <form method="get" class="d-flex align-items-center mb-4">
+            <label for="sort" class="form-label me-2">Sort By:</label>
+            <select name="sort_by" id="sort" class="form-select w-auto me-2">
+                <option value="roi">ROI</option>
+                <option value="population">Population</option>
+            </select>
+            <button type="submit" class="btn btn-secondary">Sort</button>
+        </form>
 
-    <ul>
-        {% for city in cities %}
-            <li>
-                <a href="{% url 'realty_pulse:city_detail' city.id %}">{{ city.name }}</a>
-                - ROI: {{ city.roi }}%
-                - Population: {{ city.population }}
-            </li>
-        {% empty %}
-            <li>No cities found.</li>
-        {% endfor %}
-    </ul>
+        <ul class="list-group">
+            {% for city in cities %}
+                <li class="list-group-item">
+                    <a href="{% url 'realty_pulse:city_detail' city.id %}">{{ city.name }}</a>
+                    - ROI: {{ city.roi }}%
+                    - Population: {{ city.population }}
+                </li>
+            {% empty %}
+                <li class="list-group-item">No cities found.</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

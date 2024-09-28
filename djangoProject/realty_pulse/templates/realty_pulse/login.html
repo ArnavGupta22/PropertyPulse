@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'realty_pulse/css/style.css' %}">
+</head>
+
+<body>
+        <div class="centered-container">
+        <div class ="container mt-5">
+        <h1 class="text-center">Property Pulse</h1>
+
+        <form method="post" action="{% url 'realty_pulse:login' %}" class="mt-4">
+            {% csrf_token %}
+            {{ form.non_field_errors }} <!-- Show non-field errors, like invalid username/password -->
+
+            <div class="form-group">
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password">Password:</label>
+                {{ form.password }}
+            </div>
+
+            <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary btn-centered">Login</button>
+            </div>
+
+            <div class="text-center mt-3">
+            <a href="/realty_pulse/register">Not registered?</a>
+            </div>
+
+        </form>
+            </div>
+            </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
