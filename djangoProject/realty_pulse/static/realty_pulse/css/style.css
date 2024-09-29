@@ -55,44 +55,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #229954;
-}
-
-/* Background gradient */
-.gradient-background {
-    background: linear-gradient(135deg, #E9F0F7 0%, #F5F7FA 100%);
-    position: relative;
-    min-height: 100vh;
-}
-
-/* Subtle abstract shapes */
-.gradient-background::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    width: 150px;
-    height: 150px;
-    background-color: #4A90E2;
-    opacity: 0.2;
-    border-radius: 50%;
-    z-index: 0;
-}
-
-.gradient-background::after {
-    content: '';
-    position: absolute;
-    bottom: 15%;
-    right: 10%;
-    width: 200px;
-    height: 200px;
-    background-color: #27AE60;
-    opacity: 0.2;
-    border-radius: 50%;
-    z-index: 0;
-}
-
 /* Additional diagonal line accents */
 .diagonal-line-1 {
     position: absolute;
@@ -145,29 +107,58 @@ button:hover {
     z-index: 0;
 }
 
-/* Ensure content appears above the shapes */
-.container, .home-content {
-    position: relative;
-    z-index: 1;
+/* Circle 3 */
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(30, 144, 255, 0.4); /* Dodger blue */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 15%; /* Adjust position */
+    right: 20%; /* Adjust position */
+    opacity: 0.5;
 }
 
-/* Button hover effect */
-.btn-primary {
-    background-color: #4A90E2;
-    border: none;
+
+button:hover {
+    background-color: #229954;
 }
 
-.btn-primary:hover {
-    background-color: #357ABD;
+/* Navbar styles */
+.navbar {
+  background-color: #f8f9fa; /* Light background */
 }
 
-/* Typography */
-h1, h2 {
-    font-family: Arial, serif;
-    color: #2C3E50;
+.navbar .navbar-brand {
+  color: #000; /* Dark text for the brand */
 }
 
-p.lead {
-    font-size: 1.25em;
-    color: #34495E;
+.navbar .nav-link {
+  color: #000; /* Dark text for nav links */
 }
+
+.navbar .nav-link:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.1); /* Light border for the toggler */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar .dropdown-menu {
+  background-color: #f8f9fa; /* Light background for dropdown */
+}
+
+.navbar .dropdown-item {
+  color: #000; /* Dark text for dropdown items */
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #e9ecef; /* Slightly darker background on hover */
+  color: #0056b3; /* Darker blue text on hover */
+}
+
