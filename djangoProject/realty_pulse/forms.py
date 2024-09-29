@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from realty_pulse.models import City
+
+
 class FilterForm(forms.Form):
     SORT_CHOICES = [
         ('-investmentmetrics__roi', 'ROI (High to Low)'),
@@ -9,6 +12,9 @@ class FilterForm(forms.Form):
     ]
     sort_by = forms.ChoiceField(choices=SORT_CHOICES, required=False)
     income = forms.IntegerField(required=False, min_value=0, max_value=150000)
+
+    city = forms.ModelChoiceField(queryset=City.objects.all(), required=False, label="Select City")
+    year = forms.IntegerField(required=True, min_value=2024, max_value=2030, label="Select Year")
 
 
 class CustomUserCreationForm(UserCreationForm):
