@@ -17,7 +17,7 @@ class FilterForm(forms.Form):
     income = forms.IntegerField(required=False, min_value=0, max_value=150000, label="Filter by Income")
 
     city = forms.CharField(required=False, label="Select City")
-    year = forms.IntegerField(required=True, min_value=2024, max_value=2030, label="Select Year")
+    year = forms.IntegerField(required=False, min_value=2024, max_value=2030, label="Select Year")
 
 
 class CustomUserCreationForm(UserCreationForm):
