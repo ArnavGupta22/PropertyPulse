@@ -1,11 +1,130 @@
 {% extends 'realty_pulse/base.html' %}
 
 {% block title %}Home - Property Pulse App{% endblock %}
+{% load static %}
 
 {% block content %}
-    <div class="text-center mt-5">
-        <h1>Welcome to the Property Pulse App</h1>
-        <p class="lead mt-3">Find the best cities to invest in real estate by sorting through key metrics like ROI, population, and move-in data.</p>
-        <a href="{% url 'realty_pulse:city_list' %}" class="btn btn-primary btn-lg mt-4">Browse Cities</a>
-    </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bootstrap Navbar</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            /* Custom Styles */
+
+            .hero-section {
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+                height: 80vh; /* Full viewport height */
+            }
+
+            .hero-section h1 {
+                color: #2a2a72; /* Dark blue */
+                font-size: 3rem;
+                margin-bottom: 20px;
+                white-space: nowrap; /* Prevent line breaks */
+                overflow: hidden; /* Hides the overflowing text */
+                border-right: .15em solid #007bff; /* Creates the cursor effect */
+                animation: typing 6s steps(30, end), blink-caret .75s step-end infinite; /* Typewriter effect */
+            }
+
+
+            .hero-section p {
+                color: #555; /* Grey */
+                font-size: 1.2rem;
+            }
+
+            .hero-section .btn-primary {
+                background-color: #007bff; /* Blue */
+                border: none;
+            }
+
+            .shapes {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: -1;
+            }
+
+            .circle {
+                width: 200px;
+                height: 200px;
+                background-color: rgba(0, 123, 255, 0.2); /* Light blue circle */
+                border-radius: 50%;
+                position: absolute;
+                top: -100px;
+                right: -100px;
+                opacity: 0.5;
+            }
+
+            .rectangle {
+                width: 300px;
+                height: 150px;
+                background-color: rgba(0, 123, 255, 0.1); /* Very light blue rectangle */
+                position: absolute;
+                bottom: -75px;
+                left: -150px;
+                opacity: 0.5;
+            }
+
+            /* Keyframes for typing effect */
+            @keyframes typing {
+                from { width: 0; }
+                to { width: 90%; }
+            }
+
+            @keyframes blink-caret {
+                from, to { border-color: transparent; }
+                50% { border-color: #007bff; }
+            }
+        </style>
+    </head>
+    <body class="gradient-background">
+    <!-- Design elements -->
+    <div class="diagonal-line-1"></div>
+    <div class="diagonal-line-2"></div>
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+
+
+        <div class="hero-section">
+            <div class="shapes">
+                <div class="circle"></div>
+                <div class="rectangle"></div>
+            </div>
+            <div class="text-center mt-5">
+                <h1 id="typewriter"></h1>
+                <p class="lead mt-3">Find the best cities to invest in real estate by sorting through key metrics like ROI, population, and move-in data.</p>
+                <a href="{% url 'realty_pulse:city_list' %}" class="btn btn-primary btn-lg mt-4">Browse Cities</a>
+            </div>
+        </div>
+
+        <!-- Bootstrap JS (for dropdowns and toggler) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            // JavaScript to set the text for the typewriter effect
+            const text = "Welcome to the Property Pulse App";
+            let index = 0;
+            const speed = 90; // Slower typing speed in milliseconds
+
+            function typeWriter() {
+                if (index < text.length) {
+                    document.getElementById("typewriter").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+
+            // Start the typewriter effect after the page loads
+            window.onload = typeWriter;
+
+        </script>
+    </body>
+    </html>
 {% endblock %}
