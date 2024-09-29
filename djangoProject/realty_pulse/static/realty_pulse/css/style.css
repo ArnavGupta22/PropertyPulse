@@ -55,6 +55,71 @@ button {
     cursor: pointer;
 }
 
+/* Additional diagonal line accents */
+.diagonal-line-1 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 2px;
+    height: 300px;
+    background-color: #34495E;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.diagonal-line-2 {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 2px;
+    height: 200px;
+    background-color: #34495E;
+    opacity: 0.1;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+/* Add more circles */
+.circle-1 {
+    content: '';
+    position: absolute;
+    top: 35%;
+    right: 25%;
+    width: 100px;
+    height: 100px;
+    background-color: #2C3E50;
+    opacity: 0.05;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.circle-2 {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    width: 80px;
+    height: 80px;
+    background-color: #27AE60;
+    opacity: 0.05;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Circle 3 */
+.circle-3 {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(30, 144, 255, 0.4); /* Dodger blue */
+    border-radius: 50%;
+    position: absolute;
+    bottom: 15%; /* Adjust position */
+    right: 20%; /* Adjust position */
+    opacity: 0.5;
+}
+
+
 button:hover {
     background-color: #229954;
 }

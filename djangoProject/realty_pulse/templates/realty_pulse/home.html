@@ -1,6 +1,7 @@
 {% extends 'realty_pulse/base.html' %}
 
 {% block title %}Home - Property Pulse App{% endblock %}
+{% load static %}
 
 {% block content %}
     <!DOCTYPE html>
@@ -13,6 +14,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             /* Custom Styles */
+            body {
+                background-position: center; /* Center the image */
+                background-repeat: no-repeat; /* Do not repeat the image */
+            }
+
             .hero-section {
                 display: flex;
                 justify-content: center; /* Center horizontally */
@@ -81,7 +87,14 @@
             }
         </style>
     </head>
-    <body>
+    <body class="gradient-background">
+    <!-- Design elements -->
+    <div class="diagonal-line-1"></div>
+    <div class="diagonal-line-2"></div>
+    <div class="circle-1"></div>
+    <div class="circle-2"></div>
+    <div class="circle-3"></div>
+
 
         <div class="hero-section">
             <div class="shapes">
@@ -102,7 +115,7 @@
             // JavaScript to set the text for the typewriter effect
             const text = "Welcome to the Property Pulse App";
             let index = 0;
-            const speed = 120; // Slower typing speed in milliseconds
+            const speed = 90; // Slower typing speed in milliseconds
 
             function typeWriter() {
                 if (index < text.length) {
