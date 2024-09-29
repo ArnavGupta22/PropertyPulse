@@ -11,6 +11,7 @@ class FilterForm(forms.Form):
     sort_by = forms.ChoiceField(choices=SORT_CHOICES, required=False)
 
 
+
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
