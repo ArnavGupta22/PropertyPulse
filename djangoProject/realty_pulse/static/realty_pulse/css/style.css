@@ -58,3 +58,116 @@ button {
 button:hover {
     background-color: #229954;
 }
+
+/* Background gradient */
+.gradient-background {
+    background: linear-gradient(135deg, #E9F0F7 0%, #F5F7FA 100%);
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Subtle abstract shapes */
+.gradient-background::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    background-color: #4A90E2;
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.gradient-background::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+    background-color: #27AE60;
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Additional diagonal line accents */
+.diagonal-line-1 {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 2px;
+    height: 300px;
+    background-color: #34495E;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    z-index: 0;
+}
+
+.diagonal-line-2 {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    width: 2px;
+    height: 200px;
+    background-color: #34495E;
+    opacity: 0.1;
+    transform: rotate(-45deg);
+    z-index: 0;
+}
+
+/* Add more circles */
+.circle-1 {
+    content: '';
+    position: absolute;
+    top: 35%;
+    right: 25%;
+    width: 100px;
+    height: 100px;
+    background-color: #2C3E50;
+    opacity: 0.05;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.circle-2 {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    width: 80px;
+    height: 80px;
+    background-color: #27AE60;
+    opacity: 0.05;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Ensure content appears above the shapes */
+.container, .home-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Button hover effect */
+.btn-primary {
+    background-color: #4A90E2;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #357ABD;
+}
+
+/* Typography */
+h1, h2 {
+    font-family: Arial, serif;
+    color: #2C3E50;
+}
+
+p.lead {
+    font-size: 1.25em;
+    color: #34495E;
+}
