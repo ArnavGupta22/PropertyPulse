@@ -7,13 +7,16 @@ from realty_pulse.models import City
 
 class FilterForm(forms.Form):
     SORT_CHOICES = [
-        ('-investmentmetrics__roi', 'ROI (High to Low)'),
-        ('-city__population', 'Population (High to Low)'),
+        ('-roi', 'ROI (High to Low)'),
+        ('roi', 'ROI (Low to High)'),
+        ('-income', 'Income (High to Low)'),
+        ('income', 'Income (Low to High)'),
     ]
-    sort_by = forms.ChoiceField(choices=SORT_CHOICES, required=False)
-    income = forms.IntegerField(required=False, min_value=0, max_value=150000)
+    sort_by = forms.ChoiceField(choices=SORT_CHOICES, required=False, label="Sort By")
 
-    city = forms.ModelChoiceField(queryset=City.objects.all(), required=False, label="Select City")
+    income = forms.IntegerField(required=False, min_value=0, max_value=150000, label="Filter by Income")
+
+    city = forms.CharField(required=False, label="Select City")
     year = forms.IntegerField(required=True, min_value=2024, max_value=2030, label="Select Year")
 
 

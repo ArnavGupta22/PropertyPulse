@@ -1,25 +1,107 @@
 {% extends 'realty_pulse/base.html' %}
 
-{% block title %}{{ city.name }} Details - Property Pulse App{% endblock %}
+{% block title %}City Details{% endblock %}
 
 {% block content %}
-    <div class="mt-4">
-        <h1>{{ city.name }}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ city.name }} - Details</h2>
+            <ul>
+                <li>Income: {{ city.predicted_income }}</li>
+                <li>Unemployment: {{ city.predicted_unemployment }}</li>
+                <li>Geomobility: {{ city.predicted_geomobility }}</li>
+                <li>ROI: {{ city.roi }}</li>  <!-- Use latest_roi from context -->
+            </ul>
+        </div>
 
-        <dl class="row mt-4">
-            <dt class="col-sm-3"><strong>ROI:</strong></dt>
-            <dd class="col-sm-9">{{ city.roi }}%</dd>
+        <div class="col-md-6">
+            <h3>Housing Price Over Time</h3>
+            <canvas id="housingPriceChart" style="width: 100%; height: 250px;"></canvas>
 
-            <dt class="col-sm-3"><strong>Population:</strong></dt>
-            <dd class="col-sm-9">{{ city.population }}</dd>
-
-            <dt class="col-sm-3"><strong>Move-in Data:</strong></dt>
-            <dd class="col-sm-9">{{ city.move_in_data }}</dd>
-
-            <dt class="col-sm-3"><strong>Move-out Data:</strong></dt>
-            <dd class="col-sm-9">{{ city.move_out_data }}</dd>
-        </dl>
-
-        <a href="{% url 'realty_pulse:city_list' %}" class="btn btn-secondary mt-4">Back to City List</a>
+            <h3>Truck Cost Over Time</h3>
+            <canvas id="truckCostChart" style="width: 100%; height: 250px;"></canvas>
+        </div>
     </div>
+</div>
+
+<!-- Chart.js integration -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Prepare data for housing price chart
+    var ctxHousing = document.getElementById('housingPriceChart').getContext('2d');
+    var timeSeriesData = {{ time_series|safe }};  // Data from the view
+    var years = timeSeriesData.map(data => data.year);
+    var housingPrices = timeSeriesData.map(data => data.predicted_housing_price);  // Corrected field name
+
+    var housingChart = new Chart(ctxHousing, {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [
+                {
+                    label: 'Housing Price',
+                    data: housingPrices,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Year'
+                    }
+                },
+                y: {
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Price'
+                    }
+                }
+            }
+        }
+    });
+
+    // Prepare data for truck cost chart
+    var ctxTruck = document.getElementById('truckCostChart').getContext('2d');
+    var truckCosts = timeSeriesData.map(data => data.predicted_truck_cost);  // Corrected field name
+
+    var truckChart = new Chart(ctxTruck, {
+        type: 'line',
+        data: {
+            labels: years,
+            datasets: [
+                {
+                    label: 'Truck Cost',
+                    data: truckCosts,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            scales: {
+                x: {
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Year'
+                    }
+                },
+                y: {
+                    beginAtZero: false,
+                    title: {
+                        display: true,
+                        text: 'Cost'
+                    }
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}
